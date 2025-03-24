@@ -1,0 +1,140 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-03-24T14:46:45.301887357"><title>3. Implementa&ccedil;&atilde;o do CRUD | MongoDbAtlas</title><script type="application/json" id="virtual-toc-data">[{"id":"3-1-c-digo-completo","level":0,"title":"3.1 Código Completo","anchor":"#3-1-c-digo-completo"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b725/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="3. Implementa&ccedil;&atilde;o do CRUD | MongoDbAtlas"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="MongoDbAtlas Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/3.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="3. Implementa&ccedil;&atilde;o do CRUD | MongoDbAtlas"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/3.html#webpage",
+    "url": "writerside-documentation/3.html",
+    "name": "3. Implementa&ccedil;&atilde;o do CRUD | MongoDbAtlas",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "MongoDbAtlas Help"
+}</script><!-- End Schema.org --></head><body data-id="3" data-main-title="3. Implementação do CRUD" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>MongoDbAtlas  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="3" id="3.md">3. Implementação do CRUD</h1><section class="chapter"><h2 id="3-1-c-digo-completo" data-toc="3-1-c-digo-completo"><span class="control" id="-fv5afa_6">3.1 C&oacute;digo Completo</span></h2><div class="code-block" data-lang="java">
+import com.mongodb.client.*;
+import com.mongodb.client.model.*;
+import com.mongodb.client.result.*;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class MongoAtlasCRUD {
+    private MongoClient mongoClient;
+    private MongoDatabase database;
+    private MongoCollection&lt;Document&gt; collection;
+    private final Scanner scanner = new Scanner(System.in);
+
+    // Construtor com conexão ao Atlas
+    public MongoAtlasCRUD() {
+        String connectionString = &quot;mongodb+srv://&lt;user&gt;:&lt;password&gt;@cluster0.mongodb.net/crudAtlasDB?retryWrites=true&amp;w=majority&quot;;
+        this.mongoClient = MongoClients.create(connectionString);
+        this.database = mongoClient.getDatabase(&quot;crudAtlasDB&quot;);
+        this.collection = database.getCollection(&quot;produtos&quot;);
+        System.out.println(&quot;Conectado ao MongoDB Atlas!&quot;);
+    }
+
+    // CREATE
+    public void criarProduto() {
+        System.out.println(&quot;\n--- CRIAR PRODUTO ---&quot;);
+        System.out.print(&quot;Nome: &quot;);
+        String nome = scanner.nextLine();
+        
+        System.out.print(&quot;Preço: &quot;);
+        double preco = scanner.nextDouble();
+        scanner.nextLine();
+        
+        System.out.print(&quot;Categoria: &quot;);
+        String categoria = scanner.nextLine();
+
+        Document produto = new Document(&quot;nome&quot;, nome)
+                .append(&quot;preco&quot;, preco)
+                .append(&quot;categoria&quot;, categoria);
+
+        collection.insertOne(produto);
+        System.out.println(&quot;Produto criado com ID: &quot; + produto.get(&quot;_id&quot;));
+    }
+
+    // READ
+    public void listarProdutos() {
+        System.out.println(&quot;\n--- LISTAR PRODUTOS ---&quot;);
+        for (Document produto : collection.find()) {
+            System.out.println(produto.toJson());
+        }
+    }
+
+    // UPDATE
+    public void atualizarProduto() {
+        System.out.println(&quot;\n--- ATUALIZAR PRODUTO ---&quot;);
+        System.out.print(&quot;ID do produto: &quot;);
+        String id = scanner.nextLine();
+        
+        System.out.print(&quot;Novo preço: &quot;);
+        double novoPreco = scanner.nextDouble();
+        scanner.nextLine();
+
+        Bson filtro = Filters.eq(&quot;_id&quot;, new org.bson.types.ObjectId(id));
+        Bson atualizacao = Updates.set(&quot;preco&quot;, novoPreco);
+        
+        UpdateResult result = collection.updateOne(filtro, atualizacao);
+        System.out.println(result.getModifiedCount() + &quot; produto(s) atualizado(s)&quot;);
+    }
+
+    // DELETE
+    public void deletarProduto() {
+        System.out.println(&quot;\n--- DELETAR PRODUTO ---&quot;);
+        System.out.print(&quot;ID do produto: &quot;);
+        String id = scanner.nextLine();
+        
+        Bson filtro = Filters.eq(&quot;_id&quot;, new org.bson.types.ObjectId(id));
+        DeleteResult result = collection.deleteOne(filtro);
+        
+        System.out.println(result.getDeletedCount() + &quot; produto(s) deletado(s)&quot;);
+    }
+
+    // OPERAÇÕES AVANÇADAS
+    public void operacoesAvancadas() {
+        // Agregação: média de preço por categoria
+        System.out.println(&quot;\nMédia de preço por categoria:&quot;);
+        collection.aggregate(Arrays.asList(
+            Aggregates.group(&quot;$categoria&quot;, 
+                Accumulators.avg(&quot;mediaPreco&quot;, &quot;$preco&quot;)
+            )
+        )).forEach(doc -&gt; System.out.println(doc.toJson()));
+    }
+
+    public static void main(String[] args) {
+        MongoAtlasCRUD crud = new MongoAtlasCRUD();
+        try {
+            boolean executando = true;
+            while (executando) {
+                System.out.println(&quot;\n=== MENU ===&quot;);
+                System.out.println(&quot;1. Criar produto&quot;);
+                System.out.println(&quot;2. Listar produtos&quot;);
+                System.out.println(&quot;3. Atualizar produto&quot;);
+                System.out.println(&quot;4. Deletar produto&quot;);
+                System.out.println(&quot;5. Operações avançadas&quot;);
+                System.out.println(&quot;0. Sair&quot;);
+                System.out.print(&quot;Opção: &quot;);
+                
+                int opcao = Integer.parseInt(crud.scanner.nextLine());
+                
+                switch (opcao) {
+                    case 1 -&gt; crud.criarProduto();
+                    case 2 -&gt; crud.listarProdutos();
+                    case 3 -&gt; crud.atualizarProduto();
+                    case 4 -&gt; crud.deletarProduto();
+                    case 5 -&gt; crud.operacoesAvancadas();
+                    case 0 -&gt; executando = false;
+                    default -&gt; System.out.println(&quot;Opção inválida!&quot;);
+                }
+            }
+        } finally {
+            crud.mongoClient.close();
+        }
+    }
+}
+</div></section><div class="last-modified">Last modified: 24 março 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="2.html" class="navigation-links__prev">2. Configura&ccedil;&atilde;o do Ambiente</a><a href="4.html" class="navigation-links__next">4. Testes Realizados</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b725/app.js"></script></body></html>

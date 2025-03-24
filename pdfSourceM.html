@@ -1,0 +1,394 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-java.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-markup.min.js"></script><style>
+        .article {
+            position: relative;
+            padding-bottom: 24px;
+        }
+        
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+
+        .center-text {
+            text-align: center;
+        }
+        
+
+        .code-block {
+            overflow: hidden;
+            position: relative;
+            padding: 0;
+            border-radius: 8px;
+            font-variant-ligatures: none;
+            background-color: rgba(25, 25, 28, .05);
+            word-break: break-all;
+        }
+        
+
+        .container {
+            max-width: 100%;
+            overflow: hidden;
+            page-break-inside: avoid;
+            display: block;
+        }
+        
+
+        .control {
+            color: #19191c;
+            font-size: 16px;
+            font-weight: 670;
+        }
+        
+
+        .detached {
+            margin-block-start: 0;
+            margin-block-end: 0;
+            margin-bottom: 8px;
+        }
+        
+
+        .image {
+            max-width: 100%;
+            max-height: 90vh;
+            height: auto;
+        }
+        
+
+        .image-container {
+            max-width: 100vw;
+        }
+        
+
+        .image-size {
+            height: auto;
+        }
+        
+
+        .inline-code {
+            border-radius: 4px;
+            display: inline;
+            padding: 2px 1px;
+            font-family: JetBrains Sans,monospace;
+            background: #e6e6e6;
+        }
+        
+
+        .inline-icon {
+            vertical-align: middle;
+        }
+        
+
+        .list {
+            list-style-type: disc;
+            padding-left: 0;
+            margin-left: 15px;
+        }
+        
+
+        .list-decimal {
+            list-style-type: decimal;
+        }
+        
+
+        .list-item {
+            margin-top: 6px;
+            margin-bottom: 6px;
+            margin-left: 4px;
+        }
+        
+
+        .main-title {
+            padding-bottom: 24px;
+            margin-top: 0;
+            font-size: 40px;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        
+
+        .prism {
+            page-break-inside: avoid;
+        }
+        
+        /* PrismJS 1.29.0
+https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+abap+abnf+actionscript+ada+agda+al+antlr4+apacheconf+apex+apl+applescript+aql+arduino+arff+armasm+arturo+asciidoc+aspnet+asm6502+asmatmel+autohotkey+autoit+avisynth+avro-idl+awk+bash+basic+batch+bbcode+bbj+bicep+birb+bison+bnf+bqn+brainfuck+brightscript+bro+bsl+c+csharp+cpp+cfscript+chaiscript+cil+cilkc+cilkcpp+clojure+cmake+cobol+coffeescript+concurnas+csp+cooklang+coq+crystal+css-extras+csv+cue+cypher+d+dart+dataweave+dax+dhall+diff+django+dns-zone-file+docker+dot+ebnf+editorconfig+eiffel+ejs+elixir+elm+etlua+erb+erlang+excel-formula+fsharp+factor+false+firestore-security-rules+flow+fortran+ftl+gml+gap+gcode+gdscript+gedcom+gettext+gherkin+git+glsl+gn+linker-script+go+go-module+gradle+graphql+groovy+haml+handlebars+haskell+haxe+hcl+hlsl+hoon+http+hpkp+hsts+ichigojam+icon+icu-message-format+idris+ignore+inform7+ini+io+j+java+javadoc+javadoclike+javastacktrace+jexl+jolie+jq+jsdoc+js-extras+json+json5+jsonp+jsstacktrace+js-templates+julia+keepalived+keyman+kotlin+kumir+kusto+latex+latte+less+lilypond+liquid+lisp+livescript+llvm+log+lolcode+lua+magma+makefile+markdown+markup-templating+mata+matlab+maxscript+mel+mermaid+metafont+mizar+mongodb+monkey+moonscript+n1ql+n4js+nand2tetris-hdl+naniscript+nasm+neon+nevod+nginx+nim+nix+nsis+objectivec+ocaml+odin+opencl+openqasm+oz+parigp+parser+pascal+pascaligo+psl+pcaxis+peoplecode+perl+php+phpdoc+php-extras+plant-uml+plsql+powerquery+powershell+processing+prolog+promql+properties+protobuf+pug+puppet+pure+purebasic+purescript+python+qsharp+q+qml+qore+r+racket+cshtml+jsx+tsx+reason+regex+rego+renpy+rescript+rest+rip+roboconf+robotframework+ruby+rust+sas+sass+scss+scala+scheme+shell-session+smali+smalltalk+smarty+sml+solidity+solution-file+soy+sparql+splunk-spl+sqf+sql+squirrel+stan+stata+iecst+stylus+supercollider+swift+systemd+t4-templating+t4-cs+t4-vb+tap+tcl+tt2+textile+toml+tremor+turtle+twig+typescript+typoscript+unrealscript+uorazor+uri+v+vala+vbnet+velocity+verilog+vhdl+vim+visual-basic+warpscript+wasm+web-idl+wgsl+wiki+wolfram+wren+xeora+xml-doc+xojo+xquery+yaml+yang+zig&plugins=highlight-keywords */
+code[class*=language-],pre[class*=language-]{color:#000;background:0 0;text-shadow:0 1px #fff;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre-wrap;word-spacing:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-] ::-moz-selection,code[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection{text-shadow:none;background:#b3d4fc}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:16px;margin:0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}
+
+        
+
+        :root {
+            width: 95%;
+            max-width: 95vw;
+            padding: 0 0 0 30px;
+        }
+        
+        body {
+            font-family: JetBrains Sans,serif;
+        }
+        
+        a {
+            overflow-wrap: anywhere;
+            width: 100vw;
+        }
+        
+        
+        @font-face {
+            font-family: JetBrains Sans;
+            src: url(https://resources.jetbrains.com/storage/jetbrains-sans/JetBrainsSans-Light.woff2) format("woff2"), url(https://resources.jetbrains.com/storage/jetbrains-sans/JetBrainsSans-Light.woff) format("woff");
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: JetBrains Sans;
+            src: url(https://resources.jetbrains.com/storage/jetbrains-sans/JetBrainsSans-Regular.woff2) format("woff2"), url(https://resources.jetbrains.com/storage/jetbrains-sans/JetBrainsSans-Regular.woff) format("woff");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: JetBrains Sans;
+            src: url(https://resources.jetbrains.com/storage/jetbrains-sans/JetBrainsSans-SemiBold.woff2) format("woff2"), url(https://resources.jetbrains.com/storage/jetbrains-sans/JetBrainsSans-SemiBold.woff) format("woff");
+            font-weight: 600;
+            font-style: normal;
+        }
+        
+        
+        code {
+            display: inline;
+            word-break: break-word;
+            font-size: 15px;
+            line-height: inherit;
+            font-variant-ligatures: none;
+            font-family: JetBrains Sans,monospace;
+            white-space: pre-line;
+            overflow-wrap: break-word;
+        }
+        
+        figcaption {
+            margin-top: 5px;
+        }
+        
+        h2 {
+            padding-top: 16px;
+            padding-bottom: 8px;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        
+        h3 {
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        
+        h4 {
+            padding-top: 4px;
+            padding-bottom: 8px;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        
+        p {
+            padding: 0;
+            border: 0;
+            line-height: 25px;
+            margin-block-start: 0;
+            margin-block-end: 0;
+            padding-bottom: 8px;
+        }
+        
+        div {
+            display: block;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            page-break-inside: avoid;
+        }
+        
+        th, td {
+            border: 1px solid #c4c4c4;
+            padding: 10px;
+            text-align: left;
+            word-break: break-all;
+        }
+        
+        .no-bold {
+            font-weight: normal; 
+        }
+        
+        .entry {
+            display: grid;
+            grid-template-columns: auto max-content;
+            grid-template-areas: "chapter page";
+            align-items: end;
+            gap: 0 .25rem;
+            line-height: 25px;
+        }
+        
+        .toc-link-container{
+            grid-area: chapter;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .toc-link{
+            text-decoration: none;
+            color: black;
+        }
+        
+        .toc-link-container::after {
+            position: absolute;
+            padding-left: .25ch;
+            content: " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
+            ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
+            ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
+            text-align: right;
+        }
+        
+        .page {
+            grid-area: page;
+            width: 30px;
+            text-align: right;
+        }
+        
+
+        .topic {
+            page-break-before: always;
+        }
+        </style><title>pdfSourceM</title></head><body><div><section class="topic"><div><article class="article"><h1 class="main-title">Sumario</h1><div class="entry"><div class="toc-link-container"><a class="toc-link" href="#-512279951">1. Introdu&ccedil;&atilde;o</a></div><div class="page">2</div></div><div class="entry"><div class="toc-link-container"><a class="toc-link" href="#50">2. Configura&ccedil;&atilde;o do Ambiente</a></div><div class="page">3</div></div><div class="entry"><div class="toc-link-container"><a class="toc-link" href="#51">3. Implementa&ccedil;&atilde;o do CRUD</a></div><div class="page">7</div></div><div class="entry"><div class="toc-link-container"><a class="toc-link" href="#52">4. Testes Realizados</a></div><div class="page">11</div></div><div class="entry"><div class="toc-link-container"><a class="toc-link" href="#53">5. Conclus&atilde;o</a></div><div class="page">16</div></div><div class="entry"><div class="toc-link-container"><a class="toc-link" href="#1651661729">Refer&ecirc;ncias</a></div><div class="page">17</div></div></article></div></section><section class="topic"><div><article class="article"><h1 class="main-title" id="-512279951">1. Introdu&ccedil;&atilde;o</h1><p id="-512279951#-mowv7o_3">Este relat&oacute;rio documenta a implementa&ccedil;&atilde;o de um sistema <span class="control" id="-512279951#-mowv7o_4">CRUD (Create, Read, Update, Delete)</span> utilizando <span class="control" id="-512279951#-mowv7o_5">Java</span> e <span class="control" id="-512279951#-mowv7o_6">MongoDB Atlas</span> (banco de dados em nuvem). O objetivo foi criar uma aplica&ccedil;&atilde;o que interage com um cluster remoto, realizando opera&ccedil;&otilde;es b&aacute;sicas e avan&ccedil;adas, como agrega&ccedil;&otilde;es e indexa&ccedil;&atilde;o.</p></article></div></section><section class="topic"><div><article class="article"><h1 class="main-title" id="50">2. Configura&ccedil;&atilde;o do Ambiente</h1><section class="detached"><h2 id="50#2-1-mongodb-atlas" data-toc="2-1-mongodb-atlas#2.md-2-1-mongodb-atlas">2.1 MongoDB Atlas</h2><ol class="list list-decimal" id="50#-fv5xet_6" type="1" start="1"><li class="list-item" id="50#-fv5xet_12"><p id="50#-fv5xet_14"><span class="control" id="50#-fv5xet_16">Cria&ccedil;&atilde;o do Cluster Gratuito</span></p><ul class="list" id="50#-fv5xet_15" start="1"><li class="list-item" id="50#-fv5xet_17"><p id="50#-fv5xet_20">Acessei o MongoDB Atlas (<a href="https://www.mongodb.com/atlas">https://www.mongodb.com/atlas</a>) e criei um cluster na camada gratuita (M0).</p></li><li class="list-item" id="50#-fv5xet_18"><p id="50#-fv5xet_22">Configurei um usu&aacute;rio com permiss&otilde;es de leitura e escrita.</p></li><li class="list-item" id="50#-fv5xet_19"><p id="50#-fv5xet_23">Adicionei meu endere&ccedil;o IP &agrave; lista de permiss&otilde;es. <div class="container"><figure class="image-container"><img class="center image image-size" id="50#-fv5xet_24" alt="add o endere&amp;ccedil;o ip" title="add o endere&amp;ccedil;o ip" src="/home/MrPunkdaSilva/IdeaProjects/simple-crud-mongodb-atlas/Writerside/images/1742835952937.png" width="1919" height="923"><figcaption class="center-text">add o endere&ccedil;o ip</figcaption></figure></div><div class="container"><figure class="image-container"><img class="center image image-size" id="50#-fv5xet_25" alt="criando um cluster" title="criando um cluster" src="/home/MrPunkdaSilva/IdeaProjects/simple-crud-mongodb-atlas/Writerside/images/1742835902347.png" width="1917" height="923"><figcaption class="center-text">criando um cluster</figcaption></figure></div><div class="container"><figure class="image-container"><img class="center image image-size" id="50#-fv5xet_26" alt="configurando cluster" title="configurando cluster" src="/home/MrPunkdaSilva/IdeaProjects/simple-crud-mongodb-atlas/Writerside/images/1742835917714.png" width="1919" height="917"><figcaption class="center-text">configurando cluster</figcaption></figure></div></p></li></ul></li><li class="list-item" id="50#-fv5xet_13"><p id="50#-fv5xet_27"><span class="control" id="50#-fv5xet_28">Obten&ccedil;&atilde;o da String de Conex&atilde;o</span></p></li></ol><ul class="list" id="50#-fv5xet_7" start="1"><li class="list-item" id="50#-fv5xet_29"><p id="50#-fv5xet_30">Na se&ccedil;&atilde;o <span class="control" id="50#-fv5xet_31">&quot;Connect&quot;</span>, selecionei <span class="control" id="50#-fv5xet_32">&quot;Connect your application&quot;</span>.</p></li></ul><div class="container"><figure class="image-container"><img class="center image image-size" id="50#-fv5xet_8" alt="1742836104644.png" title="1742836104644.png" src="/home/MrPunkdaSilva/IdeaProjects/simple-crud-mongodb-atlas/Writerside/images/1742836104644.png" width="1919" height="920"><figcaption class="center-text">1742836104644.png</figcaption></figure></div><ul class="list" id="50#-fv5xet_9" start="1"><li class="list-item" id="50#-fv5xet_33"><p id="50#-fv5xet_34">Copiei a <span class="control" id="50#-fv5xet_35">URI de conex&atilde;o</span>, substituindo <span class="inline-code" id="50#-fv5xet_36">&lt;password&gt;</span> e <span class="inline-code" id="50#-fv5xet_37">&lt;dbname&gt;</span> pelas minhas credenciais.</p></li></ul><div class="container"><figure class="image-container"><img class="center image image-size" id="50#-fv5xet_10" alt="1742836140069.png" title="1742836140069.png" src="/home/MrPunkdaSilva/IdeaProjects/simple-crud-mongodb-atlas/Writerside/images/1742836140069.png" width="1917" height="925"><figcaption class="center-text">1742836140069.png</figcaption></figure></div></section><section class="detached"><h2 id="50#2-2-projeto-java" data-toc="2-2-projeto-java#2.md-2-2-projeto-java">2.2 Projeto Java</h2><ul class="list" id="50#-fv5xet_39" start="1"><li class="list-item" id="50#-fv5xet_41"><p id="50#-fv5xet_43">Utilizei <span class="control" id="50#-fv5xet_44">Maven</span> para gerenciar depend&ecirc;ncias.</p></li><li class="list-item" id="50#-fv5xet_42"><p id="50#-fv5xet_45">Adicionei o driver do MongoDB no <span class="inline-code" id="50#-fv5xet_47">pom.xml</span>:</p><div class="detached code-block" id="50#-fv5xet_46"><pre><code class="language-markup">&lt;dependency&gt;
+    &lt;groupId&gt;org.mongodb&lt;/groupId&gt;
+    &lt;artifactId&gt;mongodb-driver-sync&lt;/artifactId&gt;
+    &lt;version&gt;4.11.1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre></div></li></ul></section></article></div></section><section class="topic"><div><article class="article"><h1 class="main-title" id="51">3. Implementa&ccedil;&atilde;o do CRUD</h1><section class="detached"><h2 id="51#3-1-c-digo-completo" data-toc="3-1-c-digo-completo#3.md-3-1-c-digo-completo">3.1 C&oacute;digo Completo</h2><div class="detached code-block" id="51#-fv5afa_5"><pre><code class="language-java">import com.mongodb.client.*;
+import com.mongodb.client.model.*;
+import com.mongodb.client.result.*;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class MongoAtlasCRUD {
+    private MongoClient mongoClient;
+    private MongoDatabase database;
+    private MongoCollection&lt;Document&gt; collection;
+    private final Scanner scanner = new Scanner(System.in);
+
+    // Construtor com conexão ao Atlas
+    public MongoAtlasCRUD() {
+        String connectionString = &quot;mongodb+srv://&lt;user&gt;:&lt;password&gt;@cluster0.mongodb.net/crudAtlasDB?retryWrites=true&amp;w=majority&quot;;
+        this.mongoClient = MongoClients.create(connectionString);
+        this.database = mongoClient.getDatabase(&quot;crudAtlasDB&quot;);
+        this.collection = database.getCollection(&quot;produtos&quot;);
+        System.out.println(&quot;Conectado ao MongoDB Atlas!&quot;);
+    }
+
+    // CREATE
+    public void criarProduto() {
+        System.out.println(&quot;\n--- CRIAR PRODUTO ---&quot;);
+        System.out.print(&quot;Nome: &quot;);
+        String nome = scanner.nextLine();
+        
+        System.out.print(&quot;Preço: &quot;);
+        double preco = scanner.nextDouble();
+        scanner.nextLine();
+        
+        System.out.print(&quot;Categoria: &quot;);
+        String categoria = scanner.nextLine();
+
+        Document produto = new Document(&quot;nome&quot;, nome)
+                .append(&quot;preco&quot;, preco)
+                .append(&quot;categoria&quot;, categoria);
+
+        collection.insertOne(produto);
+        System.out.println(&quot;Produto criado com ID: &quot; + produto.get(&quot;_id&quot;));
+    }
+
+    // READ
+    public void listarProdutos() {
+        System.out.println(&quot;\n--- LISTAR PRODUTOS ---&quot;);
+        for (Document produto : collection.find()) {
+            System.out.println(produto.toJson());
+        }
+    }
+
+    // UPDATE
+    public void atualizarProduto() {
+        System.out.println(&quot;\n--- ATUALIZAR PRODUTO ---&quot;);
+        System.out.print(&quot;ID do produto: &quot;);
+        String id = scanner.nextLine();
+        
+        System.out.print(&quot;Novo preço: &quot;);
+        double novoPreco = scanner.nextDouble();
+        scanner.nextLine();
+
+        Bson filtro = Filters.eq(&quot;_id&quot;, new org.bson.types.ObjectId(id));
+        Bson atualizacao = Updates.set(&quot;preco&quot;, novoPreco);
+        
+        UpdateResult result = collection.updateOne(filtro, atualizacao);
+        System.out.println(result.getModifiedCount() + &quot; produto(s) atualizado(s)&quot;);
+    }
+
+    // DELETE
+    public void deletarProduto() {
+        System.out.println(&quot;\n--- DELETAR PRODUTO ---&quot;);
+        System.out.print(&quot;ID do produto: &quot;);
+        String id = scanner.nextLine();
+        
+        Bson filtro = Filters.eq(&quot;_id&quot;, new org.bson.types.ObjectId(id));
+        DeleteResult result = collection.deleteOne(filtro);
+        
+        System.out.println(result.getDeletedCount() + &quot; produto(s) deletado(s)&quot;);
+    }
+
+    // OPERAÇÕES AVANÇADAS
+    public void operacoesAvancadas() {
+        // Agregação: média de preço por categoria
+        System.out.println(&quot;\nMédia de preço por categoria:&quot;);
+        collection.aggregate(Arrays.asList(
+            Aggregates.group(&quot;$categoria&quot;, 
+                Accumulators.avg(&quot;mediaPreco&quot;, &quot;$preco&quot;)
+            )
+        )).forEach(doc -&gt; System.out.println(doc.toJson()));
+    }
+
+    public static void main(String[] args) {
+        MongoAtlasCRUD crud = new MongoAtlasCRUD();
+        try {
+            boolean executando = true;
+            while (executando) {
+                System.out.println(&quot;\n=== MENU ===&quot;);
+                System.out.println(&quot;1. Criar produto&quot;);
+                System.out.println(&quot;2. Listar produtos&quot;);
+                System.out.println(&quot;3. Atualizar produto&quot;);
+                System.out.println(&quot;4. Deletar produto&quot;);
+                System.out.println(&quot;5. Operações avançadas&quot;);
+                System.out.println(&quot;0. Sair&quot;);
+                System.out.print(&quot;Opção: &quot;);
+                
+                int opcao = Integer.parseInt(crud.scanner.nextLine());
+                
+                switch (opcao) {
+                    case 1 -&gt; crud.criarProduto();
+                    case 2 -&gt; crud.listarProdutos();
+                    case 3 -&gt; crud.atualizarProduto();
+                    case 4 -&gt; crud.deletarProduto();
+                    case 5 -&gt; crud.operacoesAvancadas();
+                    case 0 -&gt; executando = false;
+                    default -&gt; System.out.println(&quot;Opção inválida!&quot;);
+                }
+            }
+        } finally {
+            crud.mongoClient.close();
+        }
+    }
+}</code></pre></div></section></article></div></section><section class="topic"><div><article class="article"><h1 class="main-title" id="52">4. Testes Realizados</h1><ul class="list" id="52#-fv4nfr_3" start="1"><li class="list-item" id="52#-fv4nfr_4"><p id="52#-fv4nfr_8">Execu&ccedil;&atilde;o do comando de cria&ccedil;&atilde;o de produto no terminal, mostrando o preenchimento dos campos obrigat&oacute;rios: <img class="inline-icon image image-size image-container" id="52#-fv4nfr_9" alt="Captura de tela mostrando a execu&amp;ccedil;&amp;atilde;o do comando de cria&amp;ccedil;&amp;atilde;o de produto no CRUD, com os campos 'nome', 'pre&amp;ccedil;o' e 'categoria' sendo preenchidos" title="Captura de tela mostrando a execu&amp;ccedil;&amp;atilde;o do comando de cria&amp;ccedil;&amp;atilde;o de produto no CRUD, com os campos 'nome', 'pre&amp;ccedil;o' e 'categoria' sendo preenchidos" src="/home/MrPunkdaSilva/IdeaProjects/simple-crud-mongodb-atlas/Writerside/images/criando%20produto"></p></li><li class="list-item" id="52#-fv4nfr_5"><p id="52#-fv4nfr_10">Resultado da opera&ccedil;&atilde;o de leitura mostrando todos os produtos cadastrados no banco de dados: <div class="container"><figure class="image-container"><img class="center image image-size" id="52#-fv4nfr_11" alt="Captura de tela exibindo a listagem completa de produtos em formato JSON ap&amp;oacute;s a opera&amp;ccedil;&amp;atilde;o de leitura" title="Captura de tela exibindo a listagem completa de produtos em formato JSON ap&amp;oacute;s a opera&amp;ccedil;&amp;atilde;o de leitura" src="/home/MrPunkdaSilva/IdeaProjects/simple-crud-mongodb-atlas/Writerside/images/1742837499231.png" width="1064" height="803"><figcaption class="center-text">Captura de tela exibindo a listagem completa de produtos em formato JSON ap&oacute;s a opera&ccedil;&atilde;o de leitura</figcaption></figure></div></p></li><li class="list-item" id="52#-fv4nfr_6"><p id="52#-fv4nfr_12">Sa&iacute;da da opera&ccedil;&atilde;o de agrega&ccedil;&atilde;o calculando m&eacute;dias de pre&ccedil;o agrupadas por categoria de produtos: <div class="container"><figure class="image-container"><img class="center image image-size" id="52#-fv4nfr_13" alt="Captura de tela demonstrando a execu&amp;ccedil;&amp;atilde;o da opera&amp;ccedil;&amp;atilde;o avan&amp;ccedil;ada de agrega&amp;ccedil;&amp;atilde;o, com c&amp;aacute;lculo de m&amp;eacute;dia de pre&amp;ccedil;os por categoria" title="Captura de tela demonstrando a execu&amp;ccedil;&amp;atilde;o da opera&amp;ccedil;&amp;atilde;o avan&amp;ccedil;ada de agrega&amp;ccedil;&amp;atilde;o, com c&amp;aacute;lculo de m&amp;eacute;dia de pre&amp;ccedil;os por categoria" src="/home/MrPunkdaSilva/IdeaProjects/simple-crud-mongodb-atlas/Writerside/images/1742837607535.png" width="470" height="640"><figcaption class="center-text">Captura de tela demonstrando a execu&ccedil;&atilde;o da opera&ccedil;&atilde;o avan&ccedil;ada de agrega&ccedil;&atilde;o, com c&aacute;lculo de m&eacute;dia de pre&ccedil;os por categoria</figcaption></figure></div></p></li><li class="list-item" id="52#-fv4nfr_7"><p id="52#-fv4nfr_14">Visualiza&ccedil;&atilde;o da cole&ccedil;&atilde;o 'produtos' no MongoDB Atlas comprovando a persist&ecirc;ncia dos dados inseridos: <div class="container"><figure class="image-container"><img class="center image image-size" id="52#-fv4nfr_15" alt="Captura de tela do painel do MongoDB Atlas mostrando a cole&amp;ccedil;&amp;atilde;o 'produtos' com documentos inseridos pelo aplicativo Java" title="Captura de tela do painel do MongoDB Atlas mostrando a cole&amp;ccedil;&amp;atilde;o 'produtos' com documentos inseridos pelo aplicativo Java" src="/home/MrPunkdaSilva/IdeaProjects/simple-crud-mongodb-atlas/Writerside/images/1742837732015.png" width="1919" height="916"><figcaption class="center-text">Captura de tela do painel do MongoDB Atlas mostrando a cole&ccedil;&atilde;o 'produtos' com documentos inseridos pelo aplicativo Java</figcaption></figure></div></p></li></ul></article></div></section><section class="topic"><div><article class="article"><h1 class="main-title" id="53">5. Conclus&atilde;o</h1><p id="53#-fv40g8_3">Este laborat&oacute;rio demonstrou como conectar uma aplica&ccedil;&atilde;o Java ao <span class="control" id="53#-fv40g8_4">MongoDB Atlas</span> e implementar opera&ccedil;&otilde;es <span class="control" id="53#-fv40g8_5">CRUD</span> com agrega&ccedil;&otilde;es. O c&oacute;digo foi testado com sucesso e est&aacute; pronto para uso em projetos reais.</p></article></div></section><section class="topic"><div><article class="article"><h1 class="main-title" id="1651661729">Refer&ecirc;ncias</h1><p id="1651661729#-2z9p9w_3">Referencias</p><ul class="list" id="1651661729#-2z9p9w_4" start="1"><li class="list-item" id="1651661729#-2z9p9w_5"><p id="1651661729#-2z9p9w_9">MONGODB, Inc. MongoDB Java Driver Documentation. 2023. Dispon&iacute;vel em: https://mongodb.github.io/mongo-java-driver/ (<a href="https://mongodb.github.io/mongo-java-driver/">https://mongodb.github.io/mongo-java-driver/</a>).</p></li><li class="list-item" id="1651661729#-2z9p9w_6"><p id="1651661729#-2z9p9w_11">MONGODB, Inc. MongoDB Atlas Documentation. 2023. Dispon&iacute;vel em: https://docs.atlas.mongodb.com/ (<a href="https://docs.atlas.mongodb.com/">https://docs.atlas.mongodb.com/</a>).</p></li><li class="list-item" id="1651661729#-2z9p9w_7"><p id="1651661729#-2z9p9w_13">MONGODB University. MongoDB for Java Developers Course. 2023. Dispon&iacute;vel em: https://university.mongodb.com/courses/M220J/about (<a href="https://university.mongodb.com/courses/M220J/about">https://university.mongodb.com/courses/M220J/about</a>).</p></li><li class="list-item" id="1651661729#-2z9p9w_8"><p id="1651661729#-2z9p9w_15">BAELDUNG. Introduction to MongoDB with Java. 2023. Dispon&iacute;vel em: https://www.baeldung.com/java-mongodb (<a href="https://www.baeldung.com/java-mongodb">https://www.baeldung.com/java-mongodb</a>).</p></li></ul></article></div></section></div></body></html>
